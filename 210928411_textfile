@@ -1,0 +1,39 @@
+The data set provided is a subset taken from Spotify's 2020 database. It needs to be tided from spelling mistakes, violation of the 3 principles of a tidy dataset and some need for consistency.
+
+VARIABLES:
+track_id 
+track_name/'ZZtrack_name89'
+track_artist 
+track_popularity 
+track_album_id 
+track_album_name 
+track_album_release_date 
+playlist_name
+playlist_id 
+danceablility.energy 
+key 
+loudness 
+mode 
+speechiness 
+acousticness 
+instrumentalness 
+liveness 
+valence 
+tempo 
+duration_ms 
+rap, rock, latin, r.b
+
+STEPS TAKEN TO TIDY DATA:
+- There was an issue with the danceability.energy column as it violated the first tidy data principle that each variable is a column. To correct this, the column had to be separated into two columns named 'danceability' and 'energy' since the two columns had different measuring units.
+
+- Another issue with the dataset was towards the end, where the four genres of music had their own columns violating all three rules of tidy data. Each genre should have been values rather than variables in a specific column, as each row is an observation. Since the genres were displayed as variables in the untidy dataset, the cells were mostly N/A or specific subgenres. To correct this, the pivot_longer function allowed the data to form two new columns called 'playlist_genre' and 'playlist_subgenre', categorising the songs into either rap, rock, latin or r.b in a single column and their subgenres in another column making the observations tidier and more presentable for public access.
+
+- Another issue was a spelling mistake and renaming. The spelling mistake was changed from 'The Fourty Owls' to 'The Four Owls' and the column name was renamed from 'ZZtrack_name89' to 'track_name'. This is because 'ZZtrack_name89' has unnecessary letters (ZZ) and numbers (89), so simplifying the column name to 'track_name' allowed more clarity and made the data look more uniform along with the other column names. The spelling mistake needed to be corrected to reduce data inaccuracy as the information needed to be relayed back to the correct artist rather than the wrong one.
+
+- Another issue was the 'Q' in the mode column. This is because the mode column was representing the major of a song either by 1 or 0, so the 'Q' needed to be removed for the column to be tidy.
+
+- The last issue that needed to be tidied was the year in the 'track_album_release_date' column, where '0.5' was supposed to be 2005. This is because the rest of the cell had the full year displayed, meaning the 0.5 needed to be replaced with 2005 to maintain the consistency of the data set and keep it tidy. This also reduced possible data inaccuracy for anyone analysing the data afterwards to report.
+
+- Most of the columns had their values rounded up to two decimal places, allowing the data to have some consistency and reduce complexity since it would be easier to present the data and enhance readability for the public since the excessive decimal place might be overwhelming to read and understand.
+
+- There are N/A in the track_album_id and playlist_id columns. For the track_album_id, the song could have been released as a single rather than an album on Spotify, leaving the section place for the songs leaving there so be no track_album_id to assign the song to. For the playlist_id, the dataset might not have assigned any identifiers for the certain playlist when the data was collected and the ID could be assigned at a later stage when the ID is available and ready to be presented to the public.
